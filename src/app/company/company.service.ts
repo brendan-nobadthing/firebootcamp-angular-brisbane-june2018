@@ -21,6 +21,10 @@ export class CompanyService {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteCompany(id: number){
+    return this.http.delete<Company>(`${this.API_BASE}/company/${id}`)
+  }
+
   errorHandler(error: Error): Observable<any> {
     console.error('this is a custom error handler');
     return new Observable();

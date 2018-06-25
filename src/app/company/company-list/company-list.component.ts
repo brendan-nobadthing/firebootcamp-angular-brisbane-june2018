@@ -11,6 +11,7 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./company-list.component.scss']
 })
 export class CompanyListComponent implements OnInit {
+// THIS IS THE SMART COMPONENT
 
   companies$: Observable<Company[]>;
 
@@ -25,6 +26,12 @@ export class CompanyListComponent implements OnInit {
 
   loadCompanies() {
     this.companies$ = this.companyService.getCompanies();
+  }
+
+  deleteCompany(id: number){
+    this.companyService.deleteCompany(id).subscribe(c => {
+      this.loadCompanies();
+    });
   }
 
 
