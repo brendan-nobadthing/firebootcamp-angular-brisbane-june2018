@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fbc';
+  title = 'Brisbane';
+
+  titleChanged(event) {
+    // console.log(event);
+    this.title = event.target.value;
+  }
+
 }
