@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Company } from 'src/app/company/company';
 import { CompanyService } from '../company.service';
+import { Subscription, Observable } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
+
 
 @Component({
   selector: 'fbc-company-list',
@@ -9,7 +12,7 @@ import { CompanyService } from '../company.service';
 })
 export class CompanyListComponent implements OnInit {
 
-  companies: Company[];
+  companies$: Observable<Company[]>;
 
   constructor(
     private companyService: CompanyService
@@ -21,8 +24,8 @@ export class CompanyListComponent implements OnInit {
   }
 
   loadCompanies() {
-    this.companyService.getCompanies()
-      .subscribe(c => this.companies = c);
+    this.companies$ = this.companyService.getCompanies();
   }
+
 
 }
