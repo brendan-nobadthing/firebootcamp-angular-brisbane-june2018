@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Brisbane';
-
-  titleChanged(event) {
-    // console.log(event);
-    this.title = event.target.value;
-  }
-
 }
